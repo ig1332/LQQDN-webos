@@ -37,6 +37,11 @@
       line-height: 1.15;
     }
 
+    .content-grid {
+      display: flex;
+      flex-direction: column;
+    }
+
     .illustration-wrapper {
       width: 100%;
       display: flex;
@@ -76,6 +81,12 @@
       text-indent: 0;
     }
 
+    .outro-links {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
     .links-list {
       list-style: none;
       font-size: 1.25rem;
@@ -85,14 +96,95 @@
 
     .links-list a {
       color: #000000;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.35);
-      transition: opacity 0.2s, border-color 0.2s;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: opacity 0.2s;
     }
 
     .links-list a:hover {
       opacity: 0.65;
-      border-bottom-color: #000000;
+    }
+
+    /* Formato PC y pantallas panorámicas (16:9 / escritorio) */
+    @media (min-width: 900px), (orientation: landscape) and (min-aspect-ratio: 16/10) and (min-width: 768px), (pointer: fine) and (min-width: 820px) {
+      body.desktop-view,
+      :root {
+        --es-pc-layout: 1;
+      }
+
+      body {
+        padding: 34px 48px 60px 48px;
+      }
+
+      .container {
+        max-width: 1120px;
+      }
+
+      h1 {
+        font-size: 2.35rem;
+        margin-bottom: 28px;
+      }
+
+      .content-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        column-gap: 48px;
+        align-items: start;
+      }
+
+      .story-text {
+        grid-column: 1;
+        font-size: 1.32rem;
+        line-height: 1.38;
+      }
+
+      .story-text p {
+        margin-bottom: 26px;
+        text-indent: 2.2em;
+      }
+
+      .story-text p.no-indent {
+        display: none;
+      }
+
+      .illustration-wrapper {
+        grid-column: 2;
+        margin-bottom: 0;
+        align-items: flex-end;
+      }
+
+      .illustration-wrapper img {
+        max-width: 340px;
+      }
+
+      .caption {
+        max-width: 340px;
+        font-size: 0.65rem;
+        margin-top: 4px;
+      }
+
+      .outro-links {
+        grid-column: 1 / -1;
+        align-items: center;
+        text-align: left;
+        margin-top: 12px;
+      }
+
+      .desktop-cta {
+        display: block;
+        font-size: 1.32rem;
+        margin-bottom: 18px;
+        transform: translateX(-20px);
+      }
+
+      .links-list {
+        font-size: 1.32rem;
+        line-height: 1.42;
+      }
+    }
+
+    .desktop-cta {
+      display: none;
     }
 
     @media (max-width: 480px) {
@@ -110,29 +202,53 @@
   <main class="container">
     <h1>Lo Que Queda De Nosotros</h1>
 
-    <div class="illustration-wrapper">
-      <img src="image.png" alt="Ilustración de Avi y las formas - Lo Que Queda De Nosotros">
-      <p class="caption">*imagen ilustrativa no canonica dentro de la historia. En este punto no tiene 16 años.</p>
+    <div class="content-grid">
+      <div class="story-text">
+        <p>Lo Que Queda De Nosotros es una novela que narra la vida de Avi, Un chico de 16 años que, en una época muy estresante en su vida, empieza a ver formas que le hablan y que discuten por el control y la razón.</p>
+
+        <p>En Atheria, País de residencia de Avi, la religión predominante es el Angelismo. Una religión que habla de un ángel que va a salvar al mundo. Ellos lo llaman el “Avi” por sus siglas en Atheriano “Avnek die Vignk Iaorra” (Salvador del cielo de la paz).</p>
+
+        <p>¿Por qué te hablée de la religión? ah.. no sé.</p>
+
+        <p class="no-indent">¿Quieres saber más? visita mis otras redes!</p>
+      </div>
+
+      <div class="illustration-wrapper">
+        <img src="image.png" alt="Ilustración de Avi y las formas - Lo Que Queda De Nosotros">
+        <p class="caption">*imagen ilustrativa no canonica dentro de la historia. En este punto no tiene 16 años.</p>
+      </div>
+
+      <div class="outro-links">
+        <p class="desktop-cta">¿Quieres saber más? visita mis otras redes!</p>
+        <ul class="links-list">
+          <li>Instagram - <a href="https://instagram.com/polinotium" target="_blank">@polinotium</a></li>
+          <li>X - <a href="https://x.com/polinotium" target="_blank">@polinotium</a></li>
+          <li>Tiktok - <a href="https://www.tiktok.com/@polinotium?_r=1&_t=ZS-9BK6ESnJNHY" target="_blank">@polinotium</a></li>
+          <li>Discord - <a href="https://discord.gg/kBsEVcuaHS" target="_blank">POLINOTIUM Community</a></li>
+          <li>Pagina web - <a href="https://polinotium.netlify.app" target="_blank">polinotium.netlify.app</a></li>
+        </ul>
+      </div>
     </div>
-
-    <div class="story-text">
-      <p>Lo Que Queda De Nosotros es una novela que narra la vida de Avi, Un chico de 16 años que, en una época muy estresante en su vida, empieza a ver formas que le hablan y que discuten por el control y la razón.</p>
-
-      <p>En Atheria, País de residencia de Avi, la religión predominante es el Angelismo. Una religión que habla de un ángel que va a salvar al mundo. Ellos lo llaman el “Avi” por sus siglas en Atheriano “Avnek die Vignk Iaorra” (Salvador del cielo de la paz).</p>
-
-      <p>¿Por qué te hablée de la religión? ah.. no sé.</p>
-
-      <p class="no-indent">¿Quieres saber más? visita mis otras redes!</p>
-    </div>
-
-    <ul class="links-list">
-      <li>Instagram - <a href="https://instagram.com/polinotium" target="_blank">@polinotium</a></li>
-      <li>X - <a href="https://x.com/polinotium" target="_blank">@polinotium</a></li>
-      <li>Tiktok - <a href="https://www.tiktok.com/@polinotium?_r=1&_t=ZS-9BK6ESnJNHY" target="_blank">@polinotium</a></li>
-      <li>Discord - <a href="https://discord.gg/kBsEVcuaHS" target="_blank">POLINOTIUM Community</a></li>
-      <li>Pagina web - <a href="https://polinotium.netlify.app" target="_blank">polinotium.netlify.app</a></li>
-    </ul>
   </main>
+
+  <script>
+    function aplicarDeteccionPantalla() {
+      const ancho = window.innerWidth;
+      const alto = window.innerHeight || 1;
+      const relacionAspecto = ancho / alto;
+      const esAspecto16a9 = Math.abs(relacionAspecto - (16 / 9)) < 0.22 && ancho >= 768;
+      const esEscritorio = window.matchMedia('(pointer: fine)').matches && ancho >= 820;
+
+      if (esEscritorio || esAspecto16a9 || ancho >= 900) {
+        document.body.classList.add('desktop-view');
+      } else {
+        document.body.classList.remove('desktop-view');
+      }
+    }
+
+    aplicarDeteccionPantalla();
+    window.addEventListener('resize', aplicarDeteccionPantalla);
+  </script>
 
 </body>
 </html>
